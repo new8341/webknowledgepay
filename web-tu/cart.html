@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车 - 知识付费平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .cart-item:hover {
+            background: #f8fafc;
+        }
+        .quantity-btn:hover {
+            background: #3b82f6;
+            color: white;
+        }
+        .payment-method.active {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+        .step-active {
+            background: #3b82f6;
+            color: white;
+        }
+        .step-completed {
+            background: #10b981;
+            color: white;
+        }
+        .checkout-progress {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部导航 -->
+    <nav class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-8">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-graduation-cap text-2xl text-blue-600 mr-2"></i>
+                        <span class="text-xl font-bold text-gray-800">稀际课堂</span>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">首页</a>
+                            <a href="#" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">课程</a>
+                            <a href="#" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">直播</a>
+                            <a href="#" class="text-blue-600 px-3 py-2 rounded-md text-sm font-medium">购物车</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-bell text-lg"></i>
+                    </button>
+                    <div class="flex items-center space-x-3">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="用户头像" class="w-8 h-8 rounded-full">
+                        <span class="text-gray-700">张同学</span>
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 结算进度条 -->
+    <div class="bg-white border-b">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="step-active w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium mr-3">
+                        1
+                    </div>
+                    <span class="text-blue-600 font-medium">购物车</span>
+                </div>
+                <div class="flex-1 mx-8 h-1 bg-gray-200 rounded">
+                    <div class="w-1/3 h-1 bg-blue-600 rounded checkout-progress"></div>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full border-2 border-gray-300 flex items-center justify-center text-sm font-medium mr-3">
+                        2
+                    </div>
+                    <span class="text-gray-500">确认订单</span>
+                </div>
+                <div class="flex-1 mx-8 h-1 bg-gray-200 rounded"></div>
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full border-2 border-gray-300 flex items-center justify-center text-sm font-medium mr-3">
+                        3
+                    </div>
+                    <span class="text-gray-500">支付成功</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- 左侧购物车内容 -->
+            <div class="lg:col-span-2">
+                <!-- 购物车标题 -->
+                <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+                    <div class="flex items-center justify-between">
+                        <h1 class="text-2xl font-bold text-gray-800">
+                            <i class="fas fa-shopping-cart mr-3 text-blue-600"></i>
+                            购物车
+                        </h1>
+                        <div class="flex items-center space-x-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-gray-300 text-blue-600 mr-2" checked>
+                                <span class="text-gray-600">全选</span>
+                            </label>
+                            <button class="text-red-600 hover:text-red-700 text-sm">
+                                <i class="fas fa-trash mr-1"></i>删除选中
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 推荐课程（优惠套餐） -->
+                <div class="bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 rounded-xl p-6 mb-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-fire text-orange-500 text-xl mr-2"></i>
+                        <h3 class="text-lg font-semibold text-gray-800">限时优惠套餐</h3>
+                        <span class="bg-red-500 text-white px-2 py-1 text-xs rounded ml-3">火热</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">购买Python+数据分析课程套餐，享受额外8折优惠！</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <span class="text-2xl font-bold text-red-600">¥558</span>
+                            <span class="text-gray-400 line-through ml-2">¥698</span>
+                            <span class="bg-red-100 text-red-600 px-2 py-1 text-xs rounded ml-2">省¥140</span>
+                        </div>
+                        <button class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600">
+                            <i class="fas fa-plus mr-1"></i>加入套餐
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 购物车商品列表 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <!-- 商品1 -->
+                    <div class="cart-item p-6 border-b border-gray-100">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="rounded border-gray-300 text-blue-600 mt-2 mr-4" checked>
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                                 alt="Python课程" class="w-24 h-16 object-cover rounded-lg">
+                            
+                            <div class="ml-4 flex-1">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-2">Python全栈开发实战</h3>
+                                <div class="flex items-center space-x-4 text-sm text-gray-500 mb-3">
+                                    <span><i class="fas fa-user mr-1"></i>张老师</span>
+                                    <span><i class="fas fa-clock mr-1"></i>12小时</span>
+                                    <span><i class="fas fa-star text-yellow-400 mr-1"></i>4.8</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-blue-100 text-blue-800 px-2 py-1 text-xs rounded">编程开发</span>
+                                    <span class="bg-green-100 text-green-800 px-2 py-1 text-xs rounded">进阶</span>
+                                </div>
+                            </div>
+
+                            <div class="text-right">
+                                <div class="mb-3">
+                                    <span class="text-xl font-bold text-red-600">¥299</span>
+                                    <span class="text-gray-400 text-sm line-through ml-2">¥599</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="quantity-btn w-8 h-8 border border-gray-300 rounded flex items-center justify-center text-gray-600 hover:bg-blue-600 hover:text-white">
+                                        <i class="fas fa-minus text-xs"></i>
+                                    </button>
+                                    <span class="w-12 text-center">1</span>
+                                    <button class="quantity-btn w-8 h-8 border border-gray-300 rounded flex items-center justify-center text-gray-600 hover:bg-blue-600 hover:text-white">
+                                        <i class="fas fa-plus text-xs"></i>
+                                    </button>
+                                </div>
+                                <button class="text-gray-400 hover:text-red-500 mt-2">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 商品2 -->
+                    <div class="cart-item p-6 border-b border-gray-100">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="rounded border-gray-300 text-blue-600 mt-2 mr-4" checked>
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                                 alt="数据分析课程" class="w-24 h-16 object-cover rounded-lg">
+                            
+                            <div class="ml-4 flex-1">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-2">数据分析与可视化</h3>
+                                <div class="flex items-center space-x-4 text-sm text-gray-500 mb-3">
+                                    <span><i class="fas fa-user mr-1"></i>王老师</span>
+                                    <span><i class="fas fa-clock mr-1"></i>18小时</span>
+                                    <span><i class="fas fa-star text-yellow-400 mr-1"></i>4.9</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-green-100 text-green-800 px-2 py-1 text-xs rounded">数据分析</span>
+                                    <span class="bg-orange-100 text-orange-800 px-2 py-1 text-xs rounded">入门</span>
+                                </div>
+                            </div>
+
+                            <div class="text-right">
+                                <div class="mb-3">
+                                    <span class="text-xl font-bold text-red-600">¥399</span>
+                                    <span class="text-gray-400 text-sm line-through ml-2">¥799</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="quantity-btn w-8 h-8 border border-gray-300 rounded flex items-center justify-center text-gray-600">
+                                        <i class="fas fa-minus text-xs"></i>
+                                    </button>
+                                    <span class="w-12 text-center">1</span>
+                                    <button class="quantity-btn w-8 h-8 border border-gray-300 rounded flex items-center justify-center text-gray-600">
+                                        <i class="fas fa-plus text-xs"></i>
+                                    </button>
+                                </div>
+                                <button class="text-gray-400 hover:text-red-500 mt-2">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 商品3 -->
+                    <div class="cart-item p-6">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="rounded border-gray-300 text-blue-600 mt-2 mr-4">
+                            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                                 alt="UI设计课程" class="w-24 h-16 object-cover rounded-lg opacity-50">
+                            
+                            <div class="ml-4 flex-1">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-2">UI/UX设计系统课</h3>
+                                <div class="flex items-center space-x-4 text-sm text-gray-500 mb-3">
+                                    <span><i class="fas fa-user mr-1"></i>李老师</span>
+                                    <span><i class="fas fa-clock mr-1"></i>24小时</span>
+                                    <span><i class="fas fa-star text-yellow-400 mr-1"></i>4.7</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-purple-100 text-purple-800 px-2 py-1 text-xs rounded">UI设计</span>
+                                    <span class="bg-red-100 text-red-800 px-2 py-1 text-xs rounded">高级</span>
+                                    <span class="bg-gray-100 text-gray-600 px-2 py-1 text-xs rounded">暂时缺货</span>
+                                </div>
+                            </div>
+
+                            <div class="text-right">
+                                <div class="mb-3">
+                                    <span class="text-xl font-bold text-gray-400">¥599</span>
+                                    <span class="text-gray-300 text-sm line-through ml-2">¥1199</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="w-8 h-8 border border-gray-300 rounded flex items-center justify-center text-gray-300" disabled>
+                                        <i class="fas fa-minus text-xs"></i>
+                                    </button>
+                                    <span class="w-12 text-center text-gray-400">1</span>
+                                    <button class="w-8 h-8 border border-gray-300 rounded flex items-center justify-center text-gray-300" disabled>
+                                        <i class="fas fa-plus text-xs"></i>
+                                    </button>
+                                </div>
+                                <button class="text-gray-400 hover:text-red-500 mt-2">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 推荐课程 -->
+                <div class="bg-white rounded-xl shadow-sm p-6 mt-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                        <i class="fas fa-thumbs-up text-blue-600 mr-2"></i>
+                        为您推荐
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex p-4 border border-gray-200 rounded-lg hover:shadow-md transition-all">
+                            <img src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="JavaScript课程" class="w-16 h-12 object-cover rounded">
+                            <div class="ml-3 flex-1">
+                                <h4 class="font-medium text-gray-800 text-sm">JavaScript核心技术</h4>
+                                <div class="flex items-center justify-between mt-1">
+                                    <span class="text-red-600 font-semibold">¥199</span>
+                                    <button class="text-blue-600 hover:text-blue-700 text-sm">
+                                        <i class="fas fa-plus mr-1"></i>加入
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex p-4 border border-gray-200 rounded-lg hover:shadow-md transition-all">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="Java课程" class="w-16 h-12 object-cover rounded">
+                            <div class="ml-3 flex-1">
+                                <h4 class="font-medium text-gray-800 text-sm">Java企业级开发</h4>
+                                <div class="flex items-center justify-between mt-1">
+                                    <span class="text-red-600 font-semibold">¥899</span>
+                                    <button class="text-blue-600 hover:text-blue-700 text-sm">
+                                        <i class="fas fa-plus mr-1"></i>加入
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧结算区域 -->
+            <div class="lg:col-span-1">
+                <!-- 优惠券 -->
+                <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                        <i class="fas fa-ticket-alt text-red-600 mr-2"></i>
+                        优惠券
+                    </h3>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-center p-3 border border-red-200 bg-red-50 rounded-lg">
+                            <input type="radio" name="coupon" class="mr-3" checked>
+                            <div class="flex-1">
+                                <p class="font-medium text-red-600">新用户专享券</p>
+                                <p class="text-sm text-gray-500">满300减50</p>
+                            </div>
+                            <span class="text-red-600 font-bold">-¥50</span>
+                        </div>
+
+                        <div class="flex items-center p-3 border border-gray-200 rounded-lg">
+                            <input type="radio" name="coupon" class="mr-3">
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-700">学习加油券</p>
+                                <p class="text-sm text-gray-500">满500减80</p>
+                            </div>
+                            <span class="text-gray-400">不满足</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 flex">
+                        <input type="text" placeholder="输入优惠码" class="flex-1 px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button class="px-4 py-2 bg-blue-600 text-white rounded-r-lg hover:bg-blue-700">
+                            使用
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 支付方式 -->
+                <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                        <i class="fas fa-credit-card text-green-600 mr-2"></i>
+                        支付方式
+                    </h3>
+                    
+                    <div class="space-y-3">
+                        <div class="payment-method active flex items-center p-3 border-2 rounded-lg cursor-pointer">
+                            <input type="radio" name="payment" class="mr-3" checked>
+                            <i class="fab fa-weixin text-2xl text-green-500 mr-3"></i>
+                            <span class="font-medium">微信支付</span>
+                        </div>
+
+                        <div class="payment-method flex items-center p-3 border-2 border-gray-200 rounded-lg cursor-pointer">
+                            <input type="radio" name="payment" class="mr-3">
+                            <i class="fab fa-alipay text-2xl text-blue-500 mr-3"></i>
+                            <span class="font-medium">支付宝</span>
+                        </div>
+
+                        <div class="payment-method flex items-center p-3 border-2 border-gray-200 rounded-lg cursor-pointer">
+                            <input type="radio" name="payment" class="mr-3">
+                            <i class="fas fa-university text-2xl text-gray-500 mr-3"></i>
+                            <span class="font-medium">银行卡支付</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 结算信息 -->
+                <div class="bg-white rounded-xl shadow-sm p-6 sticky top-8">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">订单金额</h3>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">商品总价</span>
+                            <span class="text-gray-800">¥1,398</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">优惠券</span>
+                            <span class="text-red-600">-¥50</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">活动优惠</span>
+                            <span class="text-red-600">-¥699</span>
+                        </div>
+                        <div class="border-t pt-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-semibold">实付金额</span>
+                                <span class="text-2xl font-bold text-red-600">¥648</span>
+                            </div>
+                            <p class="text-sm text-gray-500 mt-1">已优惠¥750</p>
+                        </div>
+                    </div>
+
+                    <!-- 结算按钮 -->
+                    <button class="w-full bg-red-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-red-700 mt-6">
+                        <i class="fas fa-lock mr-2"></i>
+                        立即结算 (2件商品)
+                    </button>
+
+                    <!-- 安全提示 -->
+                    <div class="mt-4 flex items-center justify-center text-sm text-gray-500">
+                        <i class="fas fa-shield-alt mr-2"></i>
+                        <span>安全支付，支持7天无理由退款</span>
+                    </div>
+
+                    <!-- 最近浏览 -->
+                    <div class="mt-6 pt-6 border-t">
+                        <h4 class="font-medium text-gray-800 mb-3">最近浏览</h4>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <img src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" 
+                                     alt="JavaScript课程" class="w-10 h-8 object-cover rounded mr-2">
+                                <span class="text-sm text-gray-600 flex-1">JavaScript核心技术</span>
+                                <span class="text-sm text-red-600">¥199</span>
+                            </div>
+                            <div class="flex items-center">
+                                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" 
+                                     alt="Java课程" class="w-10 h-8 object-cover rounded mr-2">
+                                <span class="text-sm text-gray-600 flex-1">Java企业级开发</span>
+                                <span class="text-sm text-red-600">¥899</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 购物车交互功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 支付方式选择
+            document.querySelectorAll('.payment-method').forEach(method => {
+                method.addEventListener('click', function() {
+                    document.querySelectorAll('.payment-method').forEach(m => {
+                        m.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    this.querySelector('input[type="radio"]').checked = true;
+                });
+            });
+
+            // 数量增减
+            document.querySelectorAll('.quantity-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const isIncrease = this.querySelector('.fa-plus');
+                    const quantitySpan = isIncrease ? 
+                        this.previousElementSibling : 
+                        this.nextElementSibling;
+                    
+                    let quantity = parseInt(quantitySpan.textContent);
+                    
+                    if (isIncrease) {
+                        quantity++;
+                    } else if (quantity > 1) {
+                        quantity--;
+                    }
+                    
+                    quantitySpan.textContent = quantity;
+                    
+                    // 更新总价（这里可以添加具体的计算逻辑）
+                    updateTotalPrice();
+                });
+            });
+
+            // 全选功能
+            document.querySelector('input[type="checkbox"]').addEventListener('change', function() {
+                const checkboxes = document.querySelectorAll('.cart-item input[type="checkbox"]');
+                checkboxes.forEach(checkbox => {
+                    if (!checkbox.disabled) {
+                        checkbox.checked = this.checked;
+                    }
+                });
+                updateTotalPrice();
+            });
+
+            function updateTotalPrice() {
+                // 这里可以添加价格计算逻辑
+                console.log('更新总价');
+            }
+        });
+    </script>
+</body>
+</html>

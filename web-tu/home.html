@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 知识付费平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        .category-item:hover {
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部导航 -->
+    <nav class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-8">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-graduation-cap text-2xl text-blue-600 mr-2"></i>
+                        <span class="text-xl font-bold text-gray-800">稀际课堂</span>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#" class="text-blue-600 px-3 py-2 rounded-md text-sm font-medium">首页</a>
+                            <a href="#" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">课程</a>
+                            <a href="#" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">直播</a>
+                            <a href="#" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">资料</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" placeholder="搜索课程..." class="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                    <button class="p-2 text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-shopping-cart text-lg"></i>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">2</span>
+                    </button>
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">登录</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主横幅 -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-5xl font-bold mb-6">开启您的<br>知识付费之旅</h1>
+                    <p class="text-xl mb-8 opacity-90">汇聚优质课程，专业讲师在线授课，助您快速掌握新技能，实现职业突破</p>
+                    <div class="flex space-x-4">
+                        <button class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100">
+                            <i class="fas fa-play mr-2"></i>开始学习
+                        </button>
+                        <button class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600">
+                            了解更多
+                        </button>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="在线学习" class="rounded-lg shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程分类 -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">热门分类</h2>
+                <p class="text-gray-600">选择您感兴趣的领域，开始专业学习</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="category-item bg-white p-6 rounded-xl shadow-sm hover:shadow-md cursor-pointer text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-code text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">编程开发</h3>
+                    <p class="text-sm text-gray-500">1,234门课程</p>
+                </div>
+                
+                <div class="category-item bg-white p-6 rounded-xl shadow-sm hover:shadow-md cursor-pointer text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-line text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">数据分析</h3>
+                    <p class="text-sm text-gray-500">856门课程</p>
+                </div>
+                
+                <div class="category-item bg-white p-6 rounded-xl shadow-sm hover:shadow-md cursor-pointer text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-palette text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">UI设计</h3>
+                    <p class="text-sm text-gray-500">642门课程</p>
+                </div>
+                
+                <div class="category-item bg-white p-6 rounded-xl shadow-sm hover:shadow-md cursor-pointer text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-bullhorn text-2xl text-orange-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">营销推广</h3>
+                    <p class="text-sm text-gray-500">528门课程</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门课程 -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">热门课程推荐</h2>
+                <p class="text-gray-600">精选优质课程，助您快速提升专业技能</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 课程卡片1 -->
+                <div class="course-card bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Python开发" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-red-500 text-white px-2 py-1 text-xs rounded-full">热门</span>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black bg-opacity-50 text-white px-2 py-1 text-xs rounded">
+                            12小时
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Python全栈开发实战</h3>
+                        <p class="text-gray-600 text-sm mb-4">从零基础到项目实战，全面掌握Python开发技能</p>
+                        <div class="flex items-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="讲师" class="w-8 h-8 rounded-full mr-3">
+                            <span class="text-gray-700 text-sm">张老师</span>
+                            <div class="ml-auto flex items-center">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="text-gray-600 text-sm ml-1">4.8</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-bold text-red-600">¥299</span>
+                                <span class="text-gray-400 text-sm line-through ml-2">¥599</span>
+                            </div>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                立即购买
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 课程卡片2 -->
+                <div class="course-card bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="数据分析" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-green-500 text-white px-2 py-1 text-xs rounded-full">新课</span>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black bg-opacity-50 text-white px-2 py-1 text-xs rounded">
+                            18小时
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">数据分析与可视化</h3>
+                        <p class="text-gray-600 text-sm mb-4">掌握Excel、Python数据分析，制作专业图表</p>
+                        <div class="flex items-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b780?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="讲师" class="w-8 h-8 rounded-full mr-3">
+                            <span class="text-gray-700 text-sm">王老师</span>
+                            <div class="ml-auto flex items-center">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="text-gray-600 text-sm ml-1">4.9</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-bold text-red-600">¥399</span>
+                                <span class="text-gray-400 text-sm line-through ml-2">¥799</span>
+                            </div>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                立即购买
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 课程卡片3 -->
+                <div class="course-card bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="UI设计" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-purple-500 text-white px-2 py-1 text-xs rounded-full">精品</span>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black bg-opacity-50 text-white px-2 py-1 text-xs rounded">
+                            24小时
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">UI/UX设计系统课</h3>
+                        <p class="text-gray-600 text-sm mb-4">从设计理论到实战项目，成为专业UI设计师</p>
+                        <div class="flex items-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="讲师" class="w-8 h-8 rounded-full mr-3">
+                            <span class="text-gray-700 text-sm">李老师</span>
+                            <div class="ml-auto flex items-center">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="text-gray-600 text-sm ml-1">4.7</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-bold text-red-600">¥599</span>
+                                <span class="text-gray-400 text-sm line-through ml-2">¥1199</span>
+                            </div>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                立即购买
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg hover:bg-blue-600 hover:text-white">
+                    查看更多课程
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部信息 -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-graduation-cap text-2xl text-blue-400 mr-2"></i>
+                        <span class="text-xl font-bold">稀际课堂</span>
+                    </div>
+                    <p class="text-gray-400">专业的知识付费平台，为您提供优质的在线学习体验</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">课程分类</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">编程开发</a></li>
+                        <li><a href="#" class="hover:text-white">数据分析</a></li>
+                        <li><a href="#" class="hover:text-white">UI设计</a></li>
+                        <li><a href="#" class="hover:text-white">营销推广</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">帮助中心</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">使用指南</a></li>
+                        <li><a href="#" class="hover:text-white">常见问题</a></li>
+                        <li><a href="#" class="hover:text-white">联系我们</a></li>
+                        <li><a href="#" class="hover:text-white">意见反馈</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">关注我们</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-600">
+                            <i class="fab fa-weixin"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-600">
+                            <i class="fab fa-weibo"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-600">
+                            <i class="fab fa-qq"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 稀际课堂 - 知识付费平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

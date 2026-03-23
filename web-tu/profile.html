@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心 - 知识付费平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tab-active {
+            background: #eff6ff;
+            border-left: 3px solid #3b82f6;
+            color: #1d4ed8;
+        }
+        .avatar-upload:hover .avatar-overlay {
+            opacity: 1;
+        }
+        .order-card:hover {
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部导航 -->
+    <nav class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-8">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-graduation-cap text-2xl text-blue-600 mr-2"></i>
+                        <span class="text-xl font-bold text-gray-800">稀际课堂</span>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">首页</a>
+                            <a href="#" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">课程</a>
+                            <a href="#" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">直播</a>
+                            <a href="#" class="text-blue-600 px-3 py-2 rounded-md text-sm font-medium">个人中心</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-bell text-lg"></i>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                    </button>
+                    <div class="flex items-center space-x-3">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="用户头像" class="w-8 h-8 rounded-full">
+                        <span class="text-gray-700">张同学</span>
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- 左侧导航 -->
+            <div class="lg:w-64 flex-shrink-0">
+                <div class="bg-white rounded-xl shadow-sm p-2 sticky top-8">
+                    <div class="text-center p-4 border-b">
+                        <div class="avatar-upload relative inline-block">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="用户头像" class="w-20 h-20 rounded-full mx-auto">
+                            <div class="avatar-overlay absolute inset-0 bg-black bg-opacity-50 rounded-full flex items-center justify-center opacity-0 transition-opacity cursor-pointer">
+                                <i class="fas fa-camera text-white text-xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mt-3">张同学</h3>
+                        <p class="text-gray-500 text-sm">Python开发工程师</p>
+                        <div class="mt-3 flex justify-center">
+                            <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-3 py-1 text-xs rounded-full">
+                                VIP会员
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <nav class="py-2">
+                        <a href="#" class="tab-active flex items-center px-4 py-3 text-sm font-medium rounded-lg">
+                            <i class="fas fa-user mr-3"></i>
+                            个人资料
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-lg">
+                            <i class="fas fa-shopping-bag mr-3"></i>
+                            订单管理
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-lg">
+                            <i class="fas fa-credit-card mr-3"></i>
+                            支付管理
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-lg">
+                            <i class="fas fa-shield-alt mr-3"></i>
+                            账户安全
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-lg">
+                            <i class="fas fa-bell mr-3"></i>
+                            通知设置
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-lg">
+                            <i class="fas fa-question-circle mr-3"></i>
+                            帮助中心
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-lg">
+                            <i class="fas fa-sign-out-alt mr-3"></i>
+                            退出登录
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- 右侧主内容 -->
+            <div class="flex-1">
+                <!-- 个人资料 -->
+                <div class="bg-white rounded-xl shadow-sm p-6 mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-semibold text-gray-800">个人资料</h2>
+                        <button class="text-blue-600 hover:text-blue-700 text-sm font-medium">编辑资料</button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">姓名</label>
+                            <input type="text" value="张同学" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">手机号</label>
+                            <input type="text" value="138****8888" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">邮箱</label>
+                            <input type="email" value="zhang@example.com" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">职业</label>
+                            <select class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option>Python开发工程师</option>
+                                <option>前端开发工程师</option>
+                                <option>后端开发工程师</option>
+                                <option>数据分析师</option>
+                                <option>产品经理</option>
+                                <option>其他</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">所在城市</label>
+                            <input type="text" value="北京" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">工作年限</label>
+                            <select class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option>1-3年</option>
+                                <option>3-5年</option>
+                                <option>5-10年</option>
+                                <option>10年以上</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">个人简介</label>
+                        <textarea rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                                  placeholder="介绍一下您自己...">热爱编程，专注于Python后端开发，希望通过学习不断提升技能水平。</textarea>
+                    </div>
+
+                    <div class="mt-6">
+                        <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 font-medium">
+                            保存修改
+                        </button>
+                        <button class="ml-4 border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 font-medium">
+                            取消
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 账户统计 -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 rounded-xl">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-blue-100 text-sm">已购课程</p>
+                                <p class="text-2xl font-bold">17门</p>
+                            </div>
+                            <i class="fas fa-graduation-cap text-3xl text-blue-200"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-xl">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-green-100 text-sm">学习时长</p>
+                                <p class="text-2xl font-bold">168小时</p>
+                            </div>
+                            <i class="fas fa-clock text-3xl text-green-200"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-purple-500 to-purple-600 text-white p-6 rounded-xl">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-purple-100 text-sm">获得证书</p>
+                                <p class="text-2xl font-bold">8张</p>
+                            </div>
+                            <i class="fas fa-certificate text-3xl text-purple-200"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-6 rounded-xl">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-orange-100 text-sm">累计消费</p>
+                                <p class="text-2xl font-bold">¥3,256</p>
+                            </div>
+                            <i class="fas fa-wallet text-3xl text-orange-200"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 最近订单 -->
+                <div class="bg-white rounded-xl shadow-sm p-6 mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-gray-800">最近订单</h3>
+                        <button class="text-blue-600 hover:text-blue-700 text-sm font-medium">查看全部</button>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="order-card flex items-center p-4 border border-gray-200 rounded-lg hover:shadow-md">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="Python课程" class="w-16 h-12 object-cover rounded">
+                            <div class="ml-4 flex-1">
+                                <h4 class="font-medium text-gray-800">Python全栈开发实战</h4>
+                                <p class="text-gray-500 text-sm">订单号: 202401150001</p>
+                                <p class="text-gray-500 text-sm">购买时间: 2024-01-15 14:30</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-semibold text-gray-800">¥299</p>
+                                <span class="bg-green-100 text-green-800 px-2 py-1 text-xs rounded-full">已完成</span>
+                            </div>
+                        </div>
+
+                        <div class="order-card flex items-center p-4 border border-gray-200 rounded-lg hover:shadow-md">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="数据分析课程" class="w-16 h-12 object-cover rounded">
+                            <div class="ml-4 flex-1">
+                                <h4 class="font-medium text-gray-800">数据分析与可视化</h4>
+                                <p class="text-gray-500 text-sm">订单号: 202401120002</p>
+                                <p class="text-gray-500 text-sm">购买时间: 2024-01-12 10:15</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-semibold text-gray-800">¥399</p>
+                                <span class="bg-green-100 text-green-800 px-2 py-1 text-xs rounded-full">已完成</span>
+                            </div>
+                        </div>
+
+                        <div class="order-card flex items-center p-4 border border-gray-200 rounded-lg hover:shadow-md">
+                            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="UI设计课程" class="w-16 h-12 object-cover rounded">
+                            <div class="ml-4 flex-1">
+                                <h4 class="font-medium text-gray-800">UI/UX设计系统课</h4>
+                                <p class="text-gray-500 text-sm">订单号: 202401100003</p>
+                                <p class="text-gray-500 text-sm">购买时间: 2024-01-10 16:45</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-semibold text-gray-800">¥599</p>
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 text-xs rounded-full">学习中</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 学习成就 -->
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-6">学习成就</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- 成就徽章 -->
+                        <div>
+                            <h4 class="font-medium text-gray-700 mb-4">获得徽章</h4>
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="text-center p-3 bg-yellow-50 rounded-lg">
+                                    <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <i class="fas fa-trophy text-white text-xl"></i>
+                                    </div>
+                                    <p class="text-xs text-gray-600">Python达人</p>
+                                </div>
+                                <div class="text-center p-3 bg-blue-50 rounded-lg">
+                                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <i class="fas fa-calendar-check text-white text-xl"></i>
+                                    </div>
+                                    <p class="text-xs text-gray-600">坚持学习</p>
+                                </div>
+                                <div class="text-center p-3 bg-green-50 rounded-lg">
+                                    <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <i class="fas fa-star text-white text-xl"></i>
+                                    </div>
+                                    <p class="text-xs text-gray-600">优秀学员</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 学习统计 -->
+                        <div>
+                            <h4 class="font-medium text-gray-700 mb-4">学习分析</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-600">本周学习</span>
+                                    <span class="font-medium">12小时</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-600">连续学习</span>
+                                    <span class="font-medium">15天</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-600">完成率</span>
+                                    <span class="font-medium">85%</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-600">平均评分</span>
+                                    <div class="flex items-center">
+                                        <div class="flex text-yellow-400 text-sm mr-1">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span class="font-medium">4.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
