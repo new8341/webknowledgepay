@@ -2,6 +2,8 @@
 
 本文件记录在 **Cursor** 中开发本项目时的约定、与仓库相关的对话要点，以及换机/协作方式。前端应用说明见 [`web/README.md`](web/README.md)。
 
+**完整对话整理（含思考过程与命令执行）**：见 [`cursor-notes.md`](cursor-notes.md)。
+
 ## 远程仓库
 
 - **GitHub**：<https://github.com/new8341/webknowledgepay>
